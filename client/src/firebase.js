@@ -1,19 +1,20 @@
 // src/firebase.js
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signInAnonymously } from 'firebase/auth';
 
 
   const firebaseConfig = {
-  apiKey: "AIzaSyBjPsl--J_vRFuOjNSPWEKWcHUyERVM19Q",
-  authDomain: "connectme-a211d.firebaseapp.com",
-  projectId: "connectme-a211d",
-  storageBucket: "connectme-a211d.firebasestorage.app",
-  messagingSenderId: "241045449625",
-  appId: "1:241045449625:web:6dc1905428253381214108",
-  measurementId: "G-0PZ4NRGX89"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID, 
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export { auth };
+export { auth, signInAnonymously };

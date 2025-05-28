@@ -1,0 +1,40 @@
+/* Background color */
+.page-bg {
+  background-color: #ECD7D7;
+}
+
+/* Card styling */
+.page-card {
+  background-color: #ECD7D7;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Welcome text */
+.welcome-text {
+  font-family: 'Kranky', cursive;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+/* Main title */
+.connect-title {
+  font-family: 'Kirang Haerang', cursive;
+  font-size: 2.5rem;
+  color: #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Buttons */
+.custom-btn {
+  font-family: 'Kirang Haerang', cursive;
+  background-color: #e9afaf;
+  color: #000000;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  width: 100%;
+
+}

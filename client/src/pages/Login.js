@@ -41,7 +41,7 @@ const Login = () => {
     setError('');
     try {
       await signInAnonymously(auth);
-      navigate('/');
+      navigate('/create');
     } catch (err) {
       setError(err.message);
     }

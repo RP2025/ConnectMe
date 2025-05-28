@@ -1,9 +1,20 @@
 import React from 'react';
+import HomePage from './pages/HomePage';
+import CreatePage from './pages/CreatePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AppRouter from './pages/AppRouter';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
-  return <AppRouter />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/create" element={<CreatePage />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+  </BrowserRouter>
+  );
 }
 
 export default App;

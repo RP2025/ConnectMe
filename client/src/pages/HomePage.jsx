@@ -1,15 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, signInAnonymously } from '../firebase';
-import CreatePage from './CreatePage';
-import './Page.css';
+import { auth } from '../firebase'; 
+import { signInAnonymously } from 'firebase/auth'; 
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   const handleAnonymousLogin = async () => {
     try {
-      await signInAnonymously(auth);
+      await signInAnonymously(auth); // use after initialization
       navigate('/create');
     } catch (err) {
       alert("Anonymous login failed: " + err.message);

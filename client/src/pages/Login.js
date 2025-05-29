@@ -30,8 +30,7 @@ const Login = () => {
     setError('');
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
-      navigate('/');
+      await signInWithPopup(auth, provider); 
     } catch (err) {
       setError(err.message);
     }
@@ -48,6 +47,10 @@ const Login = () => {
   };
 
   return (
+    <div className="container-fluid page-bg d-flex align-items-center justify-content-center vh-100">
+      <div className="text-center p-4">
+        <div className="welcome-text mb-2">We are glad to have you here, HOPIN!!</div>
+        <h1 className="connect-title mb-4">CONNECT-ME</h1>
     <div className="container mt-5" style={{ maxWidth: '400px' }}>
       <h2>Login</h2>
       <form onSubmit={handleEmailLogin}>
@@ -86,6 +89,8 @@ const Login = () => {
       <button onClick={handleAnonymousLogin} className="btn btn-secondary w-100">
         Continue as Guest (Anonymous)
       </button>
+    </div>
+    </div>
     </div>
   );
 };

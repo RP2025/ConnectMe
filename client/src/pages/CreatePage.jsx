@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Page.css';
 
+ 
+
+
 const CreatePage = () => {
+     const navigate = useNavigate();
+     
   return (
     <div className="container-fluid page-bg d-flex align-items-center justify-content-center vh-100">
       <div className="text-center p-4">
@@ -10,10 +16,10 @@ const CreatePage = () => {
 
         <div className="d-flex flex-column align-items-center gap-4">
            <div className="d-flex justify-content-center gap-4">
-                <button className="custom-btn">CREATE CHAT ROOM</button>
-                <button className="custom-btn">CREATE VIDEO ROOM</button>
+                <button className="custom-btn" onClick={() => navigate('/create-chat-room')} >CREATE CHAT ROOM</button>
+                <button className="custom-btn" onClick={() => navigate('/create-video-room')}>CREATE VIDEO ROOM</button>
             </div>
-            <button className="custom-btn">JOIN</button>
+            <button className="custom-btn" onClick={() => navigate('/join-room')} >JOIN</button>
         </div>
 
       </div>

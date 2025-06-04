@@ -31,6 +31,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider); 
+      navigate('/create');
     } catch (err) {
       setError(err.message);
     }

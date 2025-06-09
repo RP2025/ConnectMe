@@ -3,7 +3,8 @@ import HomePage from './pages/HomePage';
 import CreatePage from './pages/CreatePage';
 import CreateChatRoomPage from './pages/CreateChatRoomPage';
 import CreateVideoRoomPage from './pages/CreateVideoRoomPage';
-import JoinRoomPage from './pages/JoinRoomPage';
+import JoinChatRoomPage from './pages/JoinChatRoomPage';
+import ChatRoomPage from './pages/ChatRoomPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
@@ -17,7 +18,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/create-chat-room" element={<CreateChatRoomPage />} />
         <Route path="/create-video-room" element={<CreateVideoRoomPage />} />
-        <Route path="/join-room" element={<JoinRoomPage />} />
+        <Route path="/join-room" element={<JoinChatRoomPage />} />
+        <Route path="/chat/:roomId" element={<ChatRoomPage />} />
       </Routes>
   </BrowserRouter>
   );

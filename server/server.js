@@ -9,10 +9,9 @@ const server = http.createServer(app);
 
 app.use(cors());
 
-// Create socket.io server
 const io = new Server(server, {
   cors: {
-    origin: "*", // Update with your frontend URL in production
+    origin: "*", // Replace with frontend domain in production
     methods: ["GET", "POST"],
   },
 });
@@ -20,33 +19,46 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("🟢 User connected:", socket.id);
 
-  // Join room with user name
   socket.on("join-room", ({ roomId, name }) => {
     socket.join(roomId);
     socket.data.name = name;
-    console.log(`${name} joined room: ${roomId}`);
+    console.log(`👥 ${name} joined room ${roomId}`);
 
-    // Optional: notify room others joined
-    socket.to(roomId).emit("receive-message", {
+    const joinMessage = {
       senderName: "System",
-      text: `${name} has joined the room.`,
+      text: `${name} has joined the chat.`,
       timestamp: new Date().toISOString(),
-    });
+    };
+
+    io.to(roomId).emit("receive-message", joinMessage);
   });
 
-  // Handle incoming chat messages
   socket.on("send-message", (data) => {
-    // Broadcast message to everyone in the room (including sender)
     io.to(data.roomId).emit("receive-message", data);
   });
 
   socket.on("disconnect", () => {
-    console.log("🔴 User disconnected:", socket.id);
-    // Optional: handle user leaving notification
+    const name = socket.data.name;
+    if (!name) return;
+
+    // Notify rooms this user was in
+    const disconnectMessage = {
+      senderName: "System",
+      text: `${name} left the chat.`,
+      timestamp: new Date().toISOString(),
+    };
+
+    // Get all rooms this socket was part of
+    const rooms = Array.from(socket.rooms).filter((r) => r !== socket.id);
+    rooms.forEach((roomId) => {
+      socket.to(roomId).emit("receive-message", disconnectMessage);
+    });
+
+    console.log(`🔴 ${name} disconnected`);
   });
 });
 
-const PORT = 3000;
+const PORT = 5000;
 server.listen(PORT, () => {
-  console.log(`🚀 Server listening on http://localhost:${PORT}`);
+  console.log(`🚀 Server listening at http://localhost:${PORT}`);
 });

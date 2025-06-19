@@ -1,3 +1,4 @@
+// ChatRoomPage.jsx
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import socket from "../socket";
@@ -48,8 +49,7 @@ const ChatRoomPage = () => {
     };
 
     socket.emit("send-message", messageData);
-    // Do NOT add message locally here; wait for server to broadcast it back
-    setMsg("");
+    setMsg(""); // ✅ Clear the input
   };
 
   return (

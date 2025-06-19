@@ -1,4 +1,4 @@
-// src/socket.js
+// socket.js
 import { io } from "socket.io-client";
 
 // Replace with your backend URL or localhost if testing locally
